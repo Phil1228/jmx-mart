@@ -1,0 +1,68 @@
+<view class="detail">
+  <!-- 1. 返回按钮 -->
+  <view class="back" style="top: {{statusBarHeight + 12}}px" bindtap="goBack">‹ 返回</view>
+
+  <!-- 2. 轮播图 -->
+  <swiper class="swiper" indicator-dots="{{false}}" autoplay="{{true}}" interval="3500" duration="400" bindchange="onSwipe">
+    <swiper-item wx:for="{{imgs}}" wx:key="index"><image class="swiper-img" src="{{item}}" mode="aspectFill" /></swiper-item>
+  </swiper>
+  <view class="swipe-count">{{swipeIndex+1}}/{{imgs.length}}</view>
+
+  <!-- 3. 车型主信息卡片 -->
+  <view class="card main">
+    <view class="main-row">
+      <view class="main-left">
+        <view class="brand">{{brand}}</view>
+        <view class="model">{{name}}</view>
+        <view class="slogan">{{slogan}}</view>
+        <view class="guide">{{guide}}</view>
+      </view>
+      <view class="param-btn" bindtap="todo"><text class="param-ico">⚙</text>配置参数</view>
+    </view>
+  </view>
+
+  <!-- 4. 口碑 -->
+  <view class="card">
+    <view class="block-title">口碑</view>
+    <view class="tags">
+      <view class="tag" wx:for="{{praises}}" wx:key="*this">{{item}}</view>
+    </view>
+  </view>
+
+  <!-- 5. 官方承诺 -->
+  <view class="promise">
+    <text class="promise-title">官方承诺</text>
+    <view class="promise-items">
+      <text>品牌丰富</text><text>厂家质保</text><text>全国联保</text>
+    </view>
+  </view>
+
+  <!-- 6. 特卖车源列表 -->
+  <view class="card">
+    <view class="block-title">特卖车源</view>
+    <view class="ver" wx:for="{{versions}}" wx:key="name">
+      <view class="ver-top">
+        <view class="ver-sale">特卖</view>
+        <view class="ver-name">{{item.name}}</view>
+        <view class="ver-cfg" bindtap="todo">配置 ›</view>
+      </view>
+      <view class="ver-price">{{item.drop}}</view>
+      <view class="ver-guide">官方指导价 {{item.guide}}</view>
+      <view class="ver-btns">
+        <view class="vbtn ghost" bindtap="todo">PK对比</view>
+        <view class="vbtn pink" bindtap="todo">获取底价</view>
+      </view>
+    </view>
+  </view>
+
+  <view style="height: 120rpx"></view>
+
+  <!-- 7. 底部固定导航栏 -->
+  <view class="footbar">
+    <view class="foot-item" bindtap="todo"><text class="fi">👤</text>推荐官</view>
+    <view class="foot-item" bindtap="todo"><text class="fi">🖼</text>海报</view>
+    <view class="foot-item" bindtap="todo"><text class="fi">🔗</text>分享</view>
+    <view class="foot-item" bindtap="todo"><text class="fi">⚖</text>PK</view>
+    <view class="foot-inquiry" bindtap="todo">立即询价</view>
+  </view>
+</view>

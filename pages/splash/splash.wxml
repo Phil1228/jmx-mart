@@ -1,0 +1,11 @@
+<view class="splash">
+  <view class="center">
+    <image class="logo" src="/pages/home/images/logo.png" mode="aspectFit" />
+    <view class="title">吉新成汽车出口商城 | 折扣价买新车</view>
+  </view>
+  <view class="dots">
+    <view class="dot"></view>
+    <view class="dot"></view>
+    <view class="dot"></view>
+  </view>
+</view>

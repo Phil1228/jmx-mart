@@ -1,0 +1,44 @@
+page {
+  background: #ffffff;
+}
+.splash {
+  width: 100%;
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  width: 220rpx;
+  height: 220rpx;
+}
+.title {
+  margin-top: 48rpx;
+  font-size: 32rpx;
+  color: #111111;
+  font-weight: 500;
+  letter-spacing: 2rpx;
+  text-align: center;
+}
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16rpx;
+  padding-bottom: 80rpx;
+}
+.dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: #d8d8d8;
+}

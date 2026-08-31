@@ -1,0 +1,118 @@
+<!-- 顶部状态栏占位（小程序自带胶囊在右上角，这里用安全高度留白） -->
+<view class="status-bar" style="height: {{statusBarHeight}}px"></view>
+
+<!-- a. 顶部导航栏 -->
+<view class="topbar">
+  <image class="top-logo" src="/pages/home/images/logo.png" mode="aspectFit" />
+  <view class="top-title">吉新成汽车出口商城</view>
+  <view class="wh" bindtap="openWh">
+    <text class="wh-name">{{currentWh}}</text>
+    <text class="wh-arrow"> ›</text>
+  </view>
+</view>
+
+<!-- b. 搜索栏 -->
+<view class="searchbar">
+  <view class="search-input" bindtap="goSearch">
+    <text class="search-icon">🔍</text>
+    <text class="search-ph">搜索品牌、车型、价格</text>
+  </view>
+  <view class="brand-btn" bindtap="goSearch">品牌找车</view>
+</view>
+
+<!-- 已选搜索标签 -->
+<view class="sel-tags" wx:if="{{appliedBrand || appliedModel || appliedPrice}}">
+  <view class="sel-tag" wx:if="{{appliedBrand}}">品牌：{{appliedBrand}}<text class="sel-x" catchtap="clearSearch"> ✕</text></view>
+  <view class="sel-tag" wx:if="{{appliedModel}}">车型：{{appliedModel}}<text class="sel-x" catchtap="clearSearch"> ✕</text></view>
+  <view class="sel-tag" wx:if="{{appliedPrice}}">价格：{{appliedPriceLabel || appliedPrice}}<text class="sel-x" catchtap="clearSearch"> ✕</text></view>
+</view>
+
+<!-- 搜索表单弹层 -->
+<view class="search-mask" wx:if="{{searchShow}}" bindtap="closeSearch">
+  <view class="search-sheet" catchtap="noop">
+    <view class="ss-title">筛选车辆</view>
+
+    <view class="ss-block">
+      <view class="ss-label">品牌</view>
+      <view class="ss-chips">
+        <view class="ss-chip {{selBrand===item.key?'on':''}}" wx:for="{{brandList}}" wx:key="key" bindtap="selBrand" data-b="{{item.key}}">{{item.key}}</view>
+      </view>
+    </view>
+
+    <view class="ss-block" wx:if="{{modelList.length}}">
+      <view class="ss-label">车型（{{selBrand}}）</view>
+      <view class="ss-chips">
+        <view class="ss-chip {{selModel===item?'on':''}}" wx:for="{{modelList}}" wx:key="*this" bindtap="selModel" data-m="{{item}}">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="ss-block">
+      <view class="ss-label">价格</view>
+      <view class="ss-chips">
+        <view class="ss-chip {{selPrice===item.key?'on':''}}" wx:for="{{priceList}}" wx:key="key" bindtap="selPrice" data-k="{{item.key}}">{{item.label}}</view>
+      </view>
+    </view>
+
+    <view class="ss-actions">
+      <view class="ss-reset" bindtap="closeSearch">取消</view>
+      <view class="ss-ok" bindtap="applySearch">确定</view>
+    </view>
+  </view>
+</view>
+
+<!-- b2. 品牌快速筛选 -->
+<view class="brand-bar">
+  <view class="brand-chip {{currentBrand===item.key?'active':''}}" wx:for="{{brandList}}" wx:key="key" bindtap="pickBrand" data-b="{{item.key}}">
+    <image class="brand-logo" src="{{item.logo}}" mode="aspectFit" />
+    <text class="brand-name">{{item.key}}</text>
+  </view>
+</view>
+
+<!-- 滚动内容 -->
+<scroll-view class="content" scroll-y="true" bindscrolltolower="onReachBottom">
+  <!-- d. 热门活动 -->
+  <view class="section">
+    <view class="section-head">
+      <text class="section-title">热门活动</text>
+      <text class="section-more" bindtap="goActivity">更多 ›</text>
+    </view>
+    <view class="banner banner-blue" bindtap="goActivity">
+      <view class="banner-tag">进行中</view>
+      <view class="banner-count">倒计时 02:13:45</view>
+      <view class="banner-title">新车团购节 · 直降 3 万</view>
+      <image class="banner-illu" src="/pages/home/images/car_new.png" mode="aspectFit" />
+    </view>
+  </view>
+
+  <!-- f. 特卖车源 -->
+  <view class="section">
+    <view class="section-head">
+      <text class="section-title">特卖车源</text>
+      <text class="section-more" bindtap="goCategory">品牌｜条件选车 ›</text>
+    </view>
+    <view class="goods-grid">
+      <view class="goods-card" wx:for="{{goodsList}}" wx:key="id" bindtap="goGoods" data-b="{{item.brand}}" data-n="{{item.name}}">
+        <image class="goods-img" src="{{item.img}}" mode="aspectFit" />
+        <view class="goods-brand">{{item.brand}}</view>
+        <view class="goods-name">{{item.name}}</view>
+        <view class="goods-wh">📍{{item.warehouse}}</view>
+        <view class="goods-price"><text class="price-num">¥{{item.price}}</text><text class="price-unit">万起</text></view>
+      </view>
+    </view>
+    <view class="load-more" wx:if="{{loading}}">加载中…</view>
+    <view class="load-more muted" wx:elif="{{noMore}}">没有更多了</view>
+  </view>
+
+  <view style="height: 40rpx"></view>
+</scroll-view>
+
+<!-- 仓库选择弹窗 -->
+<view class="city-mask" wx:if="{{whShow}}" bindtap="closeWh">
+  <view class="city-sheet" catchtap="noop">
+    <view class="city-sheet-title">切换仓库</view>
+    <view class="city-list">
+      <view class="city-item {{currentWh===item?'active':''}}" wx:for="{{whList}}" wx:key="*this" bindtap="pickWh" data-w="{{item}}">{{item}}</view>
+    </view>
+    <view class="city-cancel" bindtap="closeWh">取消</view>
+  </view>
+</view>

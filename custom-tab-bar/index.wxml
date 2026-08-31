@@ -1,0 +1,18 @@
+<view class="tabbar">
+  <view class="tab-item {{selected === 0 ? 'active' : ''}}" bindtap="switchTab" data-i="0" data-path="/pages/home/home">
+    <view class="ico">🏠</view>
+    <view class="txt">首页</view>
+  </view>
+  <view class="tab-item {{selected === 1 ? 'active' : ''}}" bindtap="switchTab" data-i="1" data-path="/pages/activity/activity">
+    <view class="ico">🎁</view>
+    <view class="txt">活动福利</view>
+  </view>
+  <view class="tab-item {{selected === 2 ? 'active' : ''}}" bindtap="switchTab" data-i="2" data-path="/pages/used/used">
+    <view class="ico">🚗</view>
+    <view class="txt">二手车</view>
+  </view>
+  <view class="tab-item {{selected === 3 ? 'active' : ''}}" bindtap="switchTab" data-i="3" data-path="/pages/usercenter/index">
+    <view class="ico">👤</view>
+    <view class="txt">我的</view>
+  </view>
+</view>
