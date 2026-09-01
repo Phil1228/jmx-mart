@@ -1,0 +1,7 @@
+<view class="uc-page">
+  <view class="uc-title">功能开发中</view>
+  <view class="uc-body">
+    <text class="uc-placeholder">该功能即将开放</text>
+    <view class="uc-back" bindtap="goBack">← 返回</view>
+  </view>
+</view>

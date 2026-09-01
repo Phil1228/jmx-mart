@@ -6,13 +6,25 @@
     "pages/activity/activity",
     "pages/used/used",
     "pages/usercenter/index",
-    "pages/box/index"
+    "pages/box/index",
+    "pages/uc/order/index",
+    "pages/uc/apply/index",
+    "pages/uc/welfare/index",
+    "pages/uc/booking/index",
+    "pages/uc/agent/index",
+    "pages/uc/bind/index",
+    "pages/uc/privacy/index"
   ],
   "subpackages": [
     {
       "root": "pages/user",
       "name": "user",
-      "pages": ["person-info/index", "address/list/index", "address/edit/index", "name-edit/index"]
+      "pages": [
+        "person-info/index",
+        "address/list/index",
+        "address/edit/index",
+        "name-edit/index"
+      ]
     },
     {
       "root": "pages/goods",
@@ -46,12 +58,18 @@
     {
       "root": "pages/coupon",
       "name": "coupon",
-      "pages": ["coupon-list/index", "coupon-detail/index", "coupon-activity-goods/index"]
+      "pages": [
+        "coupon-list/index",
+        "coupon-detail/index",
+        "coupon-activity-goods/index"
+      ]
     },
     {
       "root": "pages/promotion",
       "name": "promotion",
-      "pages": ["promotion-detail/index"]
+      "pages": [
+        "promotion-detail/index"
+      ]
     }
   ],
   "tabBar": {
@@ -63,23 +81,25 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页"
+        "text": "\u9996\u9875"
       },
       {
         "pagePath": "pages/activity/activity",
-        "text": "活动福利"
+        "text": "\u6d3b\u52a8\u798f\u5229"
       },
       {
         "pagePath": "pages/used/used",
-        "text": "二手车"
+        "text": "\u4e8c\u624b\u8f66"
       },
       {
         "pagePath": "pages/usercenter/index",
-        "text": "我的"
+        "text": "\u6211\u7684"
       }
     ]
   },
-  "requiredPrivateInfos": ["chooseAddress"],
+  "requiredPrivateInfos": [
+    "chooseAddress"
+  ],
   "lazyCodeLoading": "requiredComponents",
   "entryPagePath": "pages/splash/splash",
   "usingComponents": {},
@@ -92,7 +112,7 @@
   "sitemapLocation": "sitemap.json",
   "permission": {
     "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+      "desc": "\u4f60\u7684\u4f4d\u7f6e\u4fe1\u606f\u5c06\u7528\u4e8e\u5c0f\u7a0b\u5e8f\u4f4d\u7f6e\u63a5\u53e3\u7684\u6548\u679c\u5c55\u793a"
     }
   }
 }

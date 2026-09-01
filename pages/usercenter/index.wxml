@@ -1,5 +1,90 @@
-<view class="placeholder">
-  <view class="ph-ico">👤</view>
-  <view class="ph-title">我的</view>
-  <view class="ph-sub">内容待补充</view>
+<view class="mine">
+  <!-- 顶部登录区 -->
+  <view class="login-area {{logged?'':'login-first'}}" bindtap="login">
+    <view class="login-banner" wx:if="{{!logged}}">
+      <text class="login-text">请登录</text>
+    </view>
+    <view class="user-hd" wx:if="{{logged}}">
+      <image class="user-avatar" src="{{avatar}}" mode="aspectFill"/>
+      <text class="user-nick">{{nickname}}</text>
+      <text class="user-exit" bindtap="login" data-act="logout">退出</text>
+    </view>
+  </view>
+
+  <!-- 2. 我的购车订单 -->
+  <view class="section">
+    <view class="item" bindtap="goOrder">
+      <text class="item-ic">🛒</text>
+      <text class="item-t">我的购车订单</text>
+    </view>
+  </view>
+
+  <!-- 3. 活动福利 标题 -->
+  <view class="section-title">活动福利</view>
+
+  <!-- 4. 我的订单 -->
+  <view class="section">
+    <view class="item" bindtap="goOrder">
+      <text class="item-ic">📦</text>
+      <text class="item-t">我的订单</text>
+    </view>
+  </view>
+
+  <!-- 5. 我的报名 -->
+  <view class="section">
+    <view class="item" bindtap="goApply">
+      <text class="item-ic">📝</text>
+      <text class="item-t">我的报名</text>
+    </view>
+  </view>
+
+  <!-- 6. 我参加的福利 -->
+  <view class="section">
+    <view class="item" bindtap="goWelfare">
+      <text class="item-ic">🎁</text>
+      <text class="item-t">我参加的福利</text>
+    </view>
+  </view>
+
+  <!-- 7. 我的到店预约 -->
+  <view class="section">
+    <view class="item" bindtap="goBooking">
+      <text class="item-ic">📅</text>
+      <text class="item-t">我的到店预约</text>
+    </view>
+  </view>
+
+  <!-- 8. 经纪人招募 -->
+  <view class="recluit" bindtap="goAgent">
+    <view class="rec-head">
+      <text class="rec-kpi">预估月入¥610</text>
+      <text class="rec-sub">推荐有购车需求的朋友</text>
+      <text class="rec-sub">客户有效、到店、成交都能拿奖励</text>
+    </view>
+    <view class="rec-tiers">
+      <view class="tier"><text class="tier-num">¥10</text><text class="tier-d">有效线索</text></view>
+      <view class="tier"><text class="tier-num">¥100</text><text class="tier-d">到店奖励</text></view>
+      <view class="tier"><text class="tier-num">¥500</text><text class="tier-d">成交奖励</text></view>
+    </view>
+    <view class="rec-btn">立即加入经纪人</view>
+  </view>
+
+  <!-- 9. 账号管理 标题 -->
+  <view class="section-title">账号管理</view>
+
+  <!-- 10. 销售账号绑定 -->
+  <view class="section">
+    <view class="item" bindtap="goBind">
+      <text class="item-ic">🔗</text>
+      <text class="item-t">销售账号绑定</text>
+    </view>
+  </view>
+
+  <!-- 11. 用户隐私协议 -->
+  <view class="section">
+    <view class="item" bindtap="goPrivacy">
+      <text class="item-ic">📄</text>
+      <text class="item-t">用户隐私协议</text>
+    </view>
+  </view>
 </view>
